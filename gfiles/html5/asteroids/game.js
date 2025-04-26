@@ -878,7 +878,7 @@ Game = {
 
   updateScore: function (score) {
     this.score = score
-    XGamesShare.updateScore(`${score} points`)
+    XGames.updateScore(`${score} points`)
   },
 
   spawnAsteroids: function (count) {

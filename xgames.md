@@ -99,10 +99,10 @@ The script will automatically:
 Call this whenever the score/level changes:
 
 ```javascript
-XGamesShare.updateScore('Level 5') // or 'Score 1000', etc.
+XGames.updateScore('Level 5') // or 'Score 1000', etc.
 
 // If you have multiple share buttons, specify which one:
-XGamesShare.updateScore('Level 5', '#specific-share-button')
+XGames.updateScore('Level 5', '#specific-share-button')
 ```
 
 ## 5. Share Message Format
@@ -178,7 +178,7 @@ Here's how to implement it in Astray:
     // Update score when level changes
     function updateLevel() {
       const level = Math.floor((mazeDimension - 1) / 2 - 4)
-      XGamesShare.updateScore(`Level ${level}`)
+      XGames.updateScore(`Level ${level}`)
     }
   </script>
 </body>
