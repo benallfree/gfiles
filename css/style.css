@@ -79,10 +79,16 @@ body {
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
 }
 
+:root {
+  --game-container-width: 400px;
+  --game-container-height: 300px;
+  --game-scale-factor: 1.5; /* Scale factor for the game frame */
+}
+
 /* Game iframe container */
 .iframe-container {
-  width: 400px;
-  height: 300px; /* Set a fixed height for the container */
+  width: var(--game-container-width);
+  height: var(--game-container-height);
   position: relative;
   overflow: hidden;
   background: white;
@@ -90,10 +96,10 @@ body {
 
 /* Make iframe fill container and adjust height automatically */
 #gameFrame {
-  width: 1200px; /* Set to 3x the container width */
-  height: 900px; /* Set to 3x the container height */
-  transform: scale(0.333); /* Scale down by 1/3 */
-  transform-origin: 0 0; /* Scale from top-left corner */
+  width: calc(var(--game-container-width) * var(--game-scale-factor));
+  height: calc(var(--game-container-height) * var(--game-scale-factor));
+  transform: scale(calc(1 / var(--game-scale-factor)));
+  transform-origin: 0 0;
   position: absolute;
   top: 0;
   left: 0;
