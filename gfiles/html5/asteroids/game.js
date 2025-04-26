@@ -541,7 +541,9 @@ BigAlien = function () {
   }
 
   BigAlien.prototype.collision = function (other) {
-    if (other.name == 'bullet') Game.score += 200
+    if (other.name == 'bullet') {
+      Game.updateScore(Game.score + 200)
+    }
     SFX.explosion()
     Game.explosionAt(other.x, other.y)
     this.visible = false
@@ -643,7 +645,9 @@ Asteroid = function () {
 
   this.collision = function (other) {
     SFX.explosion()
-    if (other.name == 'bullet') Game.score += 120 / this.scale
+    if (other.name == 'bullet') {
+      Game.updateScore(Game.score + Math.floor(120 / this.scale))
+    }
     this.scale /= 3
     if (this.scale > 0.5) {
       // break into fragments
@@ -659,7 +663,6 @@ Asteroid = function () {
         Game.sprites.push(roid)
       }
     }
-    Game.explosionAt(other.x, other.y)
     this.die()
   }
 }
@@ -873,6 +876,11 @@ Game = {
 
   nextBigAlienTime: null,
 
+  updateScore: function (score) {
+    this.score = score
+    XGamesShare.updateScore(`${score} points`)
+  },
+
   spawnAsteroids: function (count) {
     if (!count) count = this.totalAsteroids
     for (var i = 0; i < count; i++) {
@@ -931,7 +939,7 @@ Game = {
         }
       }
 
-      Game.score = 0
+      Game.updateScore(0)
       Game.lives = 2
       Game.totalAsteroids = 2
       Game.spawnAsteroids()
