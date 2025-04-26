@@ -79,6 +79,8 @@ Optional attributes:
 - `data-game-url`: Override the URL used in share text (defaults to twitter:player meta tag URL)
 - `data-score`: Initial score (defaults to "0")
 
+**Important**: Always initialize `data-score` with a meaningful starting value that matches your game's scoring format. This ensures the share button shows the correct score before the first score update occurs.
+
 ## 3. Import Share Script
 
 Add this to your HTML file:
@@ -99,19 +101,35 @@ The script will automatically:
 Call this whenever the score/level changes:
 
 ```javascript
-XGames.updateScore('Level 5') // or 'Score 1000', etc.
+// Include units in the score for clear context
+XGames.updateScore('1000 points') // for points-based games
+XGames.updateScore('Level 5') // for level-based games
+XGames.updateScore('$5000') // for money-based games
 
 // If you have multiple share buttons, specify which one:
-XGames.updateScore('Level 5', '#specific-share-button')
+XGames.updateScore('1000 points', '#specific-share-button')
 ```
+
+The score format should match what makes sense for your game:
+
+- Use "points" suffix for arcade/action games
+- Use "Level X" prefix for progression-based games
+- Use "$" prefix for financial/economy games
+- Use appropriate units that give context (e.g. "waves", "kills", etc.)
 
 ## 5. Share Message Format
 
 The share message will automatically follow this format:
 
 ```
-I made it to [achievement] on [GameName]. Install @xgamesproj to play right here on X and leave a comment with your high score [game-url]
+I reached [score with units] on [GameName]. Install @xgamesproj to play right here on X and leave a comment with your high score [game-url]
 ```
+
+Examples:
+
+- "I reached 1000 points on Asteroids..."
+- "I reached Level 5 on Astray..."
+- "I reached $5000 on Cookie Clicker..."
 
 The URL is taken from:
 
@@ -119,15 +137,9 @@ The URL is taken from:
 2. `twitter:player` meta tag if present
 3. Falls back to current window location
 
-Examples:
-
-- "I made it to Level 5 on Astray..."
-- "I scored 1000 points on Asteroids..."
-
 ## 6. Required Assets
 
 - `/xgames.webp` - X Games logo for the share button (16x16px)
-- `screenshot.webp` - Game screenshot for Twitter Card (1024x576px recommended)
 
 ## Notes
 
