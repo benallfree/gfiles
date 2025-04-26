@@ -4,12 +4,27 @@ This guide outlines how to integrate X Games sharing functionality into games in
 
 ## 1. Add Meta Tags (Server-Side)
 
-Add these Twitter Card meta tags to your HTML template:
+Add these social media meta tags to your HTML template:
 
 ```html
-<!-- Twitter Card Meta Tags -->
+<!-- Facebook Meta Tags -->
+<meta property="og:url" content="https://gfiles.benallfree.com/[game-path]/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="[Game Name]" />
+<meta property="og:description" content="[Game Description]" />
+<meta
+  property="og:image"
+  content="https://gfiles.benallfree.com/[game-path]/screenshot.webp"
+/>
+
+<!-- Twitter Meta Tags -->
 <meta name="twitter:card" content="game" />
 <meta name="twitter:site" content="@benallfree" />
+<meta property="twitter:domain" content="gfiles.benallfree.com" />
+<meta
+  property="twitter:url"
+  content="https://gfiles.benallfree.com/[game-path]/"
+/>
 <meta name="twitter:title" content="[Game Name]" />
 <meta name="twitter:description" content="[Game Description]" />
 <meta
