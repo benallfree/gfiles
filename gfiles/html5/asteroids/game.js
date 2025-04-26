@@ -999,12 +999,37 @@ Game = {
         Game.canvasWidth / 2 - 160,
         Game.canvasHeight / 2 + 10
       )
+
+      // Show share container
+      $('#share-container').show()
+
+      // Set up share button click handler if not already set
+      if (!this.shareHandlerSet) {
+        $('#share-button').click(function () {
+          const shareText = `I scored ${Game.score} on Asteroids. Install @xgamesproj and leave a comment with your high score gfiles.benallfree.com/asteroids`
+          navigator.clipboard
+            .writeText(shareText)
+            .then(function () {
+              const toast = $('#copy-toast')
+              toast.addClass('show')
+              setTimeout(function () {
+                toast.removeClass('show')
+              }, 2000)
+            })
+            .catch(function (err) {
+              console.error('Failed to copy text: ', err)
+            })
+        })
+        this.shareHandlerSet = true
+      }
+
       if (this.timer == null) {
         this.timer = Date.now()
       }
       // wait 5 seconds then go back to waiting state
       if (Date.now() - this.timer > 5000) {
         this.timer = null
+        $('#share-container').hide()
         this.state = 'waiting'
       }
 

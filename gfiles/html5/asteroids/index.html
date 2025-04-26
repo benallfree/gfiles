@@ -90,6 +90,46 @@
         bottom: 0px;
         right: 0px;
       }
+      #share-container {
+        position: absolute;
+        left: 50%;
+        top: 60%;
+        transform: translateX(-50%);
+        display: none;
+        text-align: center;
+      }
+      #share-button {
+        background: #1da1f2;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-family: Arial, sans-serif;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+      }
+      #share-button:hover {
+        background: #1991db;
+      }
+      #copy-toast {
+        position: fixed;
+        left: 50%;
+        top: 70%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.9);
+        color: #000;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+      #copy-toast.show {
+        opacity: 1;
+      }
     </style>
   </head>
   <body>
@@ -104,6 +144,13 @@
         <div id="space" class="button">FIRE</div>
       </div>
     </div>
+    <div id="share-container">
+      <div style="color: white; margin-bottom: 10px">
+        ~~Share your high score on X~~
+      </div>
+      <button id="share-button">Share Score</button>
+    </div>
+    <div id="copy-toast">Copied!</div>
     <script>
       // Set canvas size to match window size
       function resizeCanvas() {
