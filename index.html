@@ -1,8 +1,104 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="refresh" content="0;URL=list.html">
-	</head>
-	<body>
-	</body>
+  <head>
+    <title>X Games List</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <input
+          type="text"
+          id="gsearchbar"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="Search"
+        />
+        <div id="glist">
+          <h2>X Games</h2>
+          <a href="./gfiles/rarch/" data-game>webretro</a>
+          <a href="./gfiles/html5/2048/" data-game>2048</a>
+          <a href="./gfiles/html5/adarkroom/" data-game>A Dark Room</a>
+          <a href="./gfiles/html5/asciispace/" data-game>ASCII Space</a>
+          <a href="./gfiles/html5/asteroids/" data-game>Asteroids</a>
+          <a href="./gfiles/html5/astray/" data-game>Astray</a>
+          <a href="./gfiles/html5/backcountry/" data-game>Backcountry</a>
+          <a href="./gfiles/html5/blackholesquare/" data-game
+            >Black Hole Square</a
+          >
+          <a href="./gfiles/html5/bounceback/" data-game>Bounce Back</a>
+          <a href="./gfiles/html5/breaklock/" data-game>Breaklock</a>
+          <a href="./gfiles/html5/breakout/" data-game>Breakout</a>
+          <a href="./gfiles/html5/captaincallisto/" data-game
+            >Captain Callisto</a
+          >
+          <a href="./gfiles/html5/chess/" data-game>Chess</a>
+          <a href="./gfiles/html5/chromaincident/" data-game>Chroma Incident</a>
+          <a href="./gfiles/html5/chromedino/" data-game>Chrome Dino</a>
+          <a href="./gfiles/html5/connect3/" data-game>Connect 3</a>
+          <a href="./gfiles/html5/cookieclicker/" data-game>Cookie Clicker</a>
+          <a href="./gfiles/html5/edgenotfound/" data-game>Edge not Found</a>
+          <a href="./gfiles/html5/evilglitch/" data-game>Evil Glitch</a>
+          <a href="./gfiles/html5/factoryballsforever/" data-game
+            >Factory Balls Forever</a
+          >
+          <a href="./gfiles/html5/flappybird/" data-game>Flappy Bird</a>
+          <a href="./gfiles/html5/geometrydash/" data-game>Geometry Dash</a>
+          <a href="./gfiles/html5/hextris/" data-game>Hextris</a>
+          <a href="./gfiles/html5/konnekt/" data-game>Konnekt</a>
+          <a href="./gfiles/html5/minecraft/" data-game>Minecraft</a>
+          <a href="./gfiles/html5/ninjavsevilcorp/" data-game
+            >Ninja vs Evilcorp</a
+          >
+          <a href="./gfiles/html5/packabunchas/" data-game>Packabunchas</a>
+          <a href="./gfiles/html5/pacman/" data-game>Pac-Man</a>
+          <a href="./gfiles/html5/particleclicker/" data-game
+            >Particle Clicker</a
+          >
+          <a href="./gfiles/html5/pushback/" data-game>Push Back</a>
+          <a href="./gfiles/html5/q1k3/" data-game>Q1k3</a>
+          <a href="./gfiles/html5/racer/" data-game>Racer</a>
+          <a href="./gfiles/html5/radiusraid/" data-game>Radius Raid</a>
+          <a href="./gfiles/html5/retrohaunt/" data-game>Retrohaunt</a>
+          <a href="./gfiles/html5/roadblocks/" data-game>Road Blocks</a>
+          <a href="./gfiles/html5/run3/" data-game>Run 3</a>
+          <a href="./gfiles/html5/shuttledeck/" data-game>Shuttledeck</a>
+          <a href="./gfiles/html5/sleepingbeauty/" data-game>Sleeping Beauty</a>
+          <a href="./gfiles/html5/snake/" data-game>Snake</a>
+          <a href="./gfiles/html5/spacecompany/" data-game>Space Company</a>
+          <a href="./gfiles/html5/spacegarden/" data-game>Space Garden</a>
+          <a href="./gfiles/html5/spacehuggers/" data-game>Space Huggers</a>
+          <a href="./gfiles/html5/tetris/" data-game>Tetris</a>
+          <a href="./gfiles/html5/themazeofspacegoblins/" data-game
+            >The Maze of Space Goblins</a
+          >
+          <a href="./gfiles/html5/towermaster/" data-game>Towermaster</a>
+          <a href="./gfiles/html5/trimps/" data-game>Trimps</a>
+          <a href="./gfiles/html5/underrun/" data-game>Underrun</a>
+          <a href="./gfiles/html5/xx142-b2exe/" data-game>xx142-b2.exe</a>
+        </div>
+      </div>
+      <div class="iframe-container">
+        <iframe id="gameFrame" title="Game Frame"></iframe>
+      </div>
+    </div>
+    <script>
+      // Game list functionality
+      document.querySelectorAll('[data-game]').forEach((link) => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault()
+          document.getElementById('gameFrame').src = e.currentTarget.href
+        })
+      })
+
+      // Search functionality
+      document.getElementById('gsearchbar').addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toUpperCase().replace(/ /g, '')
+        document.querySelectorAll('#glist > a').forEach((link) => {
+          const text = link.textContent.toUpperCase()
+          link.style.display = text.includes(searchTerm) ? 'block' : 'none'
+        })
+      })
+    </script>
+  </body>
 </html>

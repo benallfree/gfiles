@@ -1,0 +1,14 @@
+{
+  "name": "gfiles",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "deploy": "wrangler pages deploy"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.10",
+    "vite": "^6.3.3",
+    "wrangler": "^4.13.2",
+    "typescript": "^5.8.3"
+  }
+}
