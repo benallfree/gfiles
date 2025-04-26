@@ -1006,7 +1006,7 @@ Game = {
       // Set up share button click handler if not already set
       if (!this.shareHandlerSet) {
         $('#share-button').click(function () {
-          const shareText = `I scored ${Game.score} on Asteroids. Install @xgamesproj and leave a comment with your high score gfiles.benallfree.com/asteroids`
+          const shareText = `I scored ${Game.score} on Asteroids. Install @xgamesproj to play right here on X and leave a comment with your high score gfiles.benallfree.com/asteroids`
           navigator.clipboard
             .writeText(shareText)
             .then(function () {
