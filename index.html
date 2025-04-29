@@ -79,8 +79,20 @@
           <a href="./gfiles/html5/xx142-b2exe/" data-game>xx142-b2.exe</a>
         </div>
       </div>
-      <div class="iframe-container">
-        <iframe id="gameFrame" title="Game Frame"></iframe>
+      <div>
+        <div class="iframe-container">
+          <iframe id="gameFrame" title="Game Frame"></iframe>
+        </div>
+        <div class="launch-container">
+          <a
+            id="launchLink"
+            href="#"
+            target="_blank"
+            class="launch-button"
+            style="display: none"
+            >Launch in new tab</a
+          >
+        </div>
       </div>
     </div>
     <script>
@@ -88,7 +100,11 @@
       document.querySelectorAll('[data-game]').forEach((link) => {
         link.addEventListener('click', (e) => {
           e.preventDefault()
-          document.getElementById('gameFrame').src = e.currentTarget.href
+          const gameUrl = e.currentTarget.href
+          document.getElementById('gameFrame').src = gameUrl
+          const launchLink = document.getElementById('launchLink')
+          launchLink.href = gameUrl
+          launchLink.style.display = 'block'
         })
       })
 
